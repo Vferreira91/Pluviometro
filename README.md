@@ -10,8 +10,9 @@ interativa dos dados com o passar do tempo.
 
 # Bibliotecas utilizadas:
 Pandas
-Numpy
+
 Gmaps
+https://buildmedia.readthedocs.org/media/pdf/jupyter-gmaps/latest/jupyter-gmaps.pdf
 
 
 Estudo realizado sobre o arquivo csv disponível em : xxxxxxx
