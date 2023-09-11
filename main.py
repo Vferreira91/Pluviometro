@@ -30,3 +30,8 @@ df = df.drop(['hora', 'minuto', 'segundo'], axis=1)
 
 #Remover a coluna 'acumulado_chuva_15_min'
 df = df.drop(['acumulado_chuva_15_min'], axis=1)
+
+#Salvando o dataframe tratado como csv
+df.to_csv('C:\\Users\\Casa\\Desktop\\pluv_tratado.csv', index=False)
+
+
