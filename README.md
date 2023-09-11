@@ -4,9 +4,9 @@
  realizado como projeto final da Formação em Analise de dados do Escritorio de Dados da PCRJ. 
 
 # Ideia de projeto:
-Fazer um "heatmap" interativo do acúmulo de chuva na cidade do Rio de Janeiro de acordo
-com os X pluviometros ativos na cidade, integrado com uma ferramenta de timelapse para visualização
-interativa dos dados com o passar do tempo.
+Fazer um heatmap interativo do acúmulo de chuva na cidade do Rio de Janeiro de acordo
+com os dados dos X pluviometros ativos na cidade, integrado com uma ferramenta de timelapse para visualização
+interativa dos dados no passar do tempo.
 
 # Bibliotecas utilizadas:
 Pandas
