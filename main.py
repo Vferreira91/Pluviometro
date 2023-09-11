@@ -19,8 +19,8 @@ df[['hora','minuto','segundo']] = df[['hora','minuto','segundo']].fillna(0)
 # Converter os valores de 'hora', 'minuto' e 'segundo' em inteiros
 df[['hora', 'minuto', 'segundo']] = df[['hora', 'minuto', 'segundo']].astype(int)
 
-# Criar uma condição de filtro para excluir linhas em que minutos e segundos são diferentes de zero
-filtro = (df['minuto'] == 0) & (df['segundo'] == 0)
+# Criar uma condição de filtro para excluir linhas em que horas, minutos e segundos são diferentes de zero
+filtro = (df['hora'] == 0) & (df['minuto'] == 0) & (df['segundo'] == 0)
 
 # Aplicar o filtro para excluir as linhas
 df = df[filtro]
@@ -28,9 +28,40 @@ df = df[filtro]
 # Remover as colunas temporárias 'hora', 'minuto' e 'segundo'
 df = df.drop(['hora', 'minuto', 'segundo'], axis=1)
 
-#Remover a coluna 'acumulado_chuva_15_min'
-df = df.drop(['acumulado_chuva_15_min'], axis=1)
+#Remover a coluna 'acumulado_chuva: 15min,1h, 4h e 24h'
+df = df.drop(['acumulado_chuva_15_min','acumulado_chuva_1_h','acumulado_chuva_4_h','acumulado_chuva_24_h'], axis=1)
 
+#Dataframe de teste para criar o heatmap no gmap:
+#Dividir a coluna 'data_particao' em ano, mes e dia:
+df[['ano','mes','dia']] = df['data_particao'].str.split('-', expand=True)
+
+#Preencher com 0 onde estiver presente valores NaN
+df[['ano','mes','dia']] = df[['ano','mes','dia']].fillna(0)
+# Converter os valores de 'ano', 'mes' e 'dia' em inteiros
+df[['ano','mes','dia']] = df[['ano','mes','dia']].astype(int)
+
+# Criar uma condição de filtro para excluir linhas em que horas, minutos e segundos são diferentes de zero
+filtro = (df['ano'] == 2015) & (df['mes'] == 1) & (df['dia'] == 1)
+
+#Aplicar o filtro para excluir as linhas
+df = df[filtro]
+
+#Dropar as colunas horario, data_particao, ano, mes dia
+df = df.drop(['horario', 'data_particao', 'ano','mes','dia'], axis=1)
+
+#O dataframe restante é o acumulado de chuvas das ultimas 96h
+# registrado a 00:00:00 do dia 01-01-2015 de cada uma das estacoes
+
+
+#O que fazer a seguir:
+#Criar duas colunas, latitude e longitude e aplicar o valor referente ao
+#id_estacao
+
+
+
+
+'''
+Codigo utilizado para teste com um subset de apenas um pluviometro
 
 #Criar um dataframe menor, com apenas os dados da estacao1
 df_estacao1 = df[df['id_estacao'] == 1]
@@ -66,5 +97,5 @@ df_estacao1.loc[df_estacao1['id_estacao'] == 1, 'longitude'] = -43.23306
 
 #Salvando o dataframe tratado como csv
 df_estacao1.to_csv('C:\\Users\\03324795\\Desktop\\pluvi_e1.csv', index=False)
-
+'''
 
