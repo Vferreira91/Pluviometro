@@ -11,8 +11,8 @@ estacoes_note = 'C:\\Users\\Juliana\\Desktop\\dados_estacoes.csv'
 
 #Criar dois dataframes: 'precip' com os dados pluviometricos e 'lat_long' com
 #as coordenadas geogfreficas de cada pluviometro
-precip = pd.read_csv(arquivo_casa)
-lat_long = pd.read_csv(estacoes_casa)
+precip = pd.read_csv(arquivo_trabalho)
+lat_long = pd.read_csv(estacoes_trabalho)
 print('|#-------------------|')
 
 #Dropando as colunas estacao, cota, x, y, endereco, situacao, data_inicio_operaco
@@ -54,6 +54,21 @@ precip = precip.drop(['hora','horario', 'minuto', 'segundo','primary_key',
                       'acumulado_chuva_15_min','acumulado_chuva_1_h',
                       'acumulado_chuva_4_h','acumulado_chuva_24_h'], axis=1)
 print('|########------------|')
+
+#Ordenar os resultados por 'data_particao','id_estacao'
+precip = precip.sort_values(by=['data_particao', 'id_estacao'], ascending=[True,True])
+
+#passando os valores de latitude e longitude do df'lat_long' para o df'precip'
+precip = precip.merge(lat_long[['id_estacao', 'latitude', 'longitude']], on='id_estacao', how='left')
+#Salvando o dataframe tratado como csv
+precip.to_csv('C:\\Users\\03324795\\Desktop\\timeline.csv', index=False)
+
+#precip['data_particao'] = pd.to_datetime(precip['data_particao'])
+#precip['dia'] = precip['data_particao'].dt.day
+# Converta a coluna 'data_particao' para o formato datetime
+precip['data_particao'] = pd.to_datetime(precip['data_particao'])
+# Crie a nova coluna 'numero' com os valores da data no formato int (yyyymmdd)
+precip['numero'] = precip['data_particao'].dt.strftime('%Y%m%d').astype(int)
 
 
 #Dataframe de TESTE, com os dados de um unico dia de cada pluviometro
