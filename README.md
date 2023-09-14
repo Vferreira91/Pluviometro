@@ -4,7 +4,10 @@
  realizado como projeto final da Formação em Analise de dados do Escritorio de Dados da PCRJ. 
 
 # Para fazer:
-Trabalhar na criação da timeline utilizando os dados dos demais dias.
+Atualizar as longitudes do dataframe alternativo.
+Verificar a interpolação dos dados com o uso do dataframe alternativo
+
+Refazer o dataframe de base com maior quantidade de dados para melhor visualização em alta frequência.
 
 # Ideia de projeto:
 Fazer um heatmap interativo do acúmulo de chuva na cidade do Rio de Janeiro de acordo
