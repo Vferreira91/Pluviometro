@@ -23,3 +23,7 @@ dados = {
 # Criar o DataFrame
 lat_long_alternativo = pd.DataFrame(dados)
 
+#Salvar como csv
+lat_long_alternativo.to_csv('C:\\Users\\[nome_usuario]\\Desktop\\lat_long_alt.csv', index=False)
+
+
